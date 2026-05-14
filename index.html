@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Product Card</title>
+</head>
+
+<body class=" min-h-screen flex items-center justify-center gap-10 p-10">
+
+
+  <div class="bg-[#08142f] w-[400px] rounded-3xl p-7 text-white border border-gray-700">
+
+   
+    <h1 class="text-5xl font-light text-center mt-10 mb-28">
+      Shoe Shop
+    </h1>
+
+   
+    <div class="flex justify-between items-start">
+      <div>
+        <h2 class="text-3xl font-bold">Bata</h2>
+      </div>
+
+      <button id="love" class="text-3xl">♡</button>
+    </div>
+
+    <div class="flex justify-between mt-10 text-2xl">
+      <span class="text-gray-400">Price</span>
+      <span class="text-cyan-400 font-bold">$<span id="price">1200</span></span>
+    </div>
+
+
+    <div class="flex justify-between mt-6 text-2xl">
+      <span class="text-gray-400">Remaining Stock</span>
+      <span class="text-yellow-400 font-bold">
+        <span id="stock">4</span> Left
+      </span>
+    </div>
+
+ 
+    <div class="flex justify-between items-center mt-6 text-2xl">
+
+      <span class="text-gray-400">Quantity</span>
+
+      <div class="flex items-center gap-4">
+
+        <button
+          id="minus"
+          class="bg-[#1b2a4a] w-12 h-12 rounded-xl text-2xl"
+        >
+          -
+        </button>
+
+        <span id="quantity" class="font-bold">1</span>
+
+        <button
+          id="plus"
+          class="bg-[#1b2a4a] w-12 h-12 rounded-xl text-2xl"
+        >
+          +
+        </button>
+
+      </div>
+    </div>
+
+  
+    <div class="flex justify-between text-3xl font-bold">
+      <span>Total</span>
+      <span class="text-cyan-400">
+        $<span id="total">1200</span>
+      </span>
+    </div>
+
+   
+    <button id="cart" class="w-full bg-cyan-600 hover:bg-cyan-500 mt-8 py-4 rounded-2xl text-2xl font-bold">
+      Add To Cart
+    </button>
+
+  </div>
+
+  <script>
+
+   
+    const price = 1200;
+    const maxStock = 4;
+
+   
+    const quantityEl = document.getElementById("quantity");
+    const totalEl = document.getElementById("total");
+    const stockEl = document.getElementById("stock");
+    const cart = document.getElementById("cart");
+    const love = document.getElementById("love");
+    const plus = document.getElementById("plus");
+    const minus = document.getElementById("minus");
+
+    let quantity = 1;
+
+  
+    function updateUI() {
+      quantityEl.innerText = quantity;
+      totalEl.innerText = quantity * price;
+      stockEl.innerText = maxStock - quantity;
+    }
+    
+    love.addEventListener("click", ()=>{
+      if (love.innerText === "♡") {
+    love.innerText = "❤️";
+      } else {
+    love.innerText = "♡";
+    }
+    })
+    
+    plus.addEventListener("click", () => {
+
+      if (quantity < maxStock) {
+        quantity++;
+        updateUI();
+      }
+
+    });
+
+  
+    minus.addEventListener("click", () => {
+
+      if (quantity > 1) {
+        quantity--;
+        updateUI();
+      }
+
+    });
+ 
+     cart.addEventListener("click",()=>{
+      alert("Product Added To Cart");
+     })
+
+    
+
+  </script>
+
+</body>
+</html>
